@@ -1,0 +1,98 @@
+1.) Git 更像是一个小型的文件系统，提供了许多以此为基础构建的超强工具，而不只是一个简单的 VCS。
+
+2.) 三种状态
+Git 有三种状态，你的文件可能处于其中之一：已提交（committed）、已修改（modified）和已暂存（staged）。
+Git 项目的三个工作区域的概念：Git 仓库、工作目录以及暂存区域。
+
+每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较。所谓快照其实是对本项目所有被追踪的文件的一次纪录。
+
+3.) 配置文件说明：
+1. /etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 --system 选项的 git config 时，它会从此文件读写配置变量。
+2.~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 可以传递 --global 选项让 Git 读写此文件。
+3.当前使用仓库的 Git 目录中的 config 文件（就是 .git/config）：针对该仓库。
+
+4.) 配置用户信息:
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
+5.) 配置文本编辑器:
+$ git config --global core.editor Vim
+
+6.) 检查配置信息:
+$ git config --list
+
+7.) 检查某个配置项：
+$ git config user.name
+
+8.) 获取帮助：
+若你使用 Git 时需要获取帮助，有三种方法可以找到 Git 命令的使用手册：
+$ git help <verb>
+$ git <verb> --help
+$ man git-<verb>
+
+9.) 获取 Git 仓库：
+$ git init ===〉在现有目录中初始化仓库
+或者
+$ git clone https://github.com/libgit2/libgit2 ===〉克隆现有的仓库
+
+10.) 检查当前文件状态
+$ git status
+On branch master
+nothing to commit, working directory clean
+
+11.) $ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   README
+只要在 Changes to be committed 这行下面的，就说明是已暂存状态。
+
+
+12.) git add 命令是个多功能命令：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等。将这个命令理解为“添加内容到下一次提交中”而不是“将一个文件添加到项目中”要更加合适。
+
+13.) 状态简览
+$ git status -s
+
+14.) 忽略文件
+一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。
+
+
+15.) 要查看尚未暂存的文件更新了哪些部分，不加参数直接输入 git diff
+此命令比较的是工作目录中当前文件和暂存区域快照之间的差异， 也就是修改之后还没有暂存起来的变化内容。
+
+16.) 跳过使用暂存区域
+尽管使用暂存区域的方式可以精心准备要提交的细节，但有时候这么做略显繁琐。 Git 提供了一个跳过使用暂存区域的方式， 只要在提交的时候，给 git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。
+$ git commit -a -m 'added new benchmarks'
+
+17.) 移除文件
+$ git rm PROJECTS.md
+
+git rm 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。 比方说：
+$ git rm log/\*.log
+
+18.) 要在 Git 中对文件改名，可以这么做：
+$ git mv file_from file_to
+
+其实，运行 git mv 就相当于运行了下面三条命令：
+
+$ mv README.md README
+$ git rm README.md
+$ git add README
+
+
+19.) 查看提交历史
+$ git log
+
+一个常用的选项是 -p，用来显示每次提交的内容差异。 你也可以加上 -2 来仅显示最近两次提交：
+$ git log -p -2
+
+如果你想看到每次提交的简略的统计信息，你可以使用 --stat 选项：
+$ git log --stat
+
+另外一个常用的选项是 --pretty。 这个选项可以指定使用不同于默认格式的方式展示提交历史。
+$ git log --pretty=oneline
+
+20.) 你一定奇怪作者和提交者之间究竟有何差别，其实作者指的是实际作出修改的人，提交者指的是最后将此工作成果提交到仓库的人。 所以，当你为某个项目发布补丁，然后某个核心成员将你的补丁并入项目时，你就是作者，而那个核心成员就是提交者。
+
+
