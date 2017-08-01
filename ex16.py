@@ -31,3 +31,9 @@ target.write(line1 + "\n" + line2 + "\n" + line3)
 
 print "And finally, we close it."
 target.close()
+
+# Study Drills
+
+# There’s too much repetition in this file. Use strings, formats, and escapes to print out
+# line1, line2, and line3 with just one target.write() command instead of six.
+# A: See as above

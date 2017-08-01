@@ -31,3 +31,8 @@ example(value1)
 example(999)
 example("8888")
 example(33 + 11)
+
+# Study Drills
+
+# Write at least one more function of your own design, and run it 10 different ways.
+# A: See above

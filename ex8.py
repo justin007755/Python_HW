@@ -12,3 +12,12 @@ print formatter % (
     "So I said goodnight."
 )
 print "%s" % u"好"
+
+# Study Drills
+
+# Do your checks, write down your mistakes, and try not to make the same mistakes on the next exercise.
+# A: Ok
+
+# Notice that the last line of output uses both single-quotes and double-quotes for individual pieces.
+# Why do you think that is?
+# A: 双引号里可以带单引号

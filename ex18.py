@@ -15,3 +15,8 @@ print_two("Zed", "Shaw")
 print_two_again("Zed", "Shaw")
 print_one("First!")
 print_none()
+
+# Study Drills
+
+# Did you start your function defi nition with def?
+# A: Yes
